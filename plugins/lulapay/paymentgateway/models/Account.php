@@ -30,4 +30,19 @@ class Account extends Model
         'name' => 'required|between:4,50|unique:lulapay_paymentgateway_accounts',
         'api_host' => 'required|string:6,255|regex:/^(https?:\/\/[\w\-\.]+(:[0-9]+)?(\/[\w\-\.]*)*\/?)$/'
     ];
+
+    public function save_data()
+    {
+        $this->save();
+    }
+
+    public function update_data()
+    {
+        $this->save();
+    }
+    
+    public function delete_data()
+    {
+        $this->delete();
+    }
 }

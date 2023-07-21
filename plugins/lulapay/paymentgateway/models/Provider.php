@@ -27,4 +27,24 @@ class Provider extends Model
         'code' => 'required|between:4,12|unique:lulapay_paymentgateway_providers',
     ];
 
+    public function get_detail()
+    {
+        return $this;
+    }
+
+    public function save_data()
+    {
+        $this->save();
+    }
+
+    public function update_data()
+    {
+        $this->save();
+    }
+    
+    public function delete_data()
+    {
+        $this->delete();
+    }
+
 }

@@ -67,6 +67,11 @@ class Transaction extends Model
     {
     }
     
+    public function checkout()
+    {
+
+    }
+
     public function beforeCreate() {
         $this->expired_time          =  date('Y-m-d H:i:s', strtotime('+ 30 minutes'));
         $this->transaction_hash      = Uuid::uuid4()->toString();
@@ -83,11 +88,6 @@ class Transaction extends Model
         }
 
         return false;
-    }
-
-    public function onCheckStatus()
-    {
-        
     }
 
     public function getTrxId()
@@ -108,7 +108,7 @@ class Transaction extends Model
         return null;
     }
 
-    public function setStatus($status, $provider)
+    public function update_status($status, $provider)
     {
         $currentStatus = $this->transaction_status_id;
         
@@ -259,12 +259,12 @@ class Transaction extends Model
             $message->subject($email['subject']);
         });
 
-        $this->sendNotificationToMerchant();
+        $this->notif_to_merchant();
 
         return true;
     }
 
-    public function sendNotificationToMerchant()
+    public function notif_to_merchant()
     {
 
         $url = $this->merchant->notif_callback_url.'?key='.$this->merchant->public_key;
@@ -337,6 +337,11 @@ class Transaction extends Model
         $response = curl_exec($curl);
 
         curl_close($curl);
+    }
+
+    public function set_method_id()
+    {
+        
     }
     
     public function getPaymentMethodNameAttribute() 

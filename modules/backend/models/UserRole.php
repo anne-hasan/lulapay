@@ -78,4 +78,24 @@ class UserRole extends RoleBase
     {
         return AuthManager::instance()->listPermissionsForRole($this->code);
     }
+
+    public function get_detail()
+    {
+        return $this;
+    }
+
+    public function save_data()
+    {
+        $this->save();
+    }
+
+    public function update_data()
+    {
+        $this->save();
+    }
+    
+    public function delete_data()
+    {
+        $this->delete();
+    }
 }

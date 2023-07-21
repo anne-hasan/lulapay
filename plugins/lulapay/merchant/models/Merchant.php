@@ -102,4 +102,19 @@ class Merchant extends Model
 
         return $result;
     }
+
+    public function save_data()
+    {
+        $this->save();
+    }
+
+    public function update_data()
+    {
+        $this->save();
+    }
+    
+    public function delete_data()
+    {
+        $this->delete();
+    }
 }

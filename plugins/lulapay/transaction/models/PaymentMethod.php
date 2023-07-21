@@ -36,4 +36,24 @@ class PaymentMethod extends Model
     public $attachOne = [
         'logo' => 'System\Models\File'
     ];
+
+    public function get_detail()
+    {
+        return $this;
+    }
+
+    public function save_data()
+    {
+        $this->save();
+    }
+
+    public function update_data()
+    {
+        $this->save();
+    }
+    
+    public function delete_data()
+    {
+        $this->delete();
+    }
 }
